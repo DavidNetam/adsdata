@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
 canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
 }
 </style>
-
 </head>
-
-
-     
 <body onload="startGame()">
 <script>
 
@@ -80,65 +76,4 @@ this.x += this.speedX;
         if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
             crash = false;
 }
-        return crash;}
-}
-
-function updateGameArea() {
-    var x, height, gap, minHeight, maxHeight, minGap, maxGap;
-    for (i = 0; i < myObstacles.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles[i])) {
-            myGameArea.stop();
-            return;
-        } 
-    }
-    myGameArea.clear();
-    myGameArea.frameNo += 1;
-    if (myGameArea.frameNo == 1 || everyinterval(150)) {
-x = myGameArea.canvas.width;
-        minHeight = 20;
-        maxHeight = 200;
-        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        minGap = 50;
-        maxGap = 200;
-        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "green", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
-    }
-    for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].speedX = -1;
-        myObstacles[i].newPos();
-        myObstacles[i].update();
-    }
-function everyinterval(n) {
-    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
-    return false;
-}
-
-function moveup() {
-    myGamePiece.speedY = -1; 
-}
-function movedown() {
-    myGamePiece.speedY = 1; 
-}
-
-function moveleft() {
-    myGamePiece.speedX = -1; 
-}
-
-function moveright() {
-    myGamePiece.speedX = 1; 
-}
-function clearmove() {
-    myGamePiece.speedX = 0; 
-    myGamePiece.speedY = 0; 
-}
-</script><div style="text-align:center;width:480px;">
-  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
-  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
-  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
-  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
-</div>
-<p>The score will count one point for each frame you manage to "stay alive".</p>
-
-</body>
-</html>
+        return crash;
