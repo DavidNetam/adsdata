@@ -136,6 +136,55 @@ function clearmove() {
   <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
   <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
 </div>
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '329272134178690',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v13.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+ </script>
+ <script>
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+ </script>
+<script>
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: 'curl -i -X GET \
+ "EAAEreKSXl4IBOxSTJH8SoACwC2KFPtjlqw99MvgvVk6M3QCBdI6ZCoTlM7AanGpMLdBxukRODTIbDxjoWbsQMb0tvI9hRbJ5rrgfiW7CTyYDAITESP611e7QrZCZBt9tDL1Op8PG2qqyWIlFUADZANgL4BoG08ZAxbwFPrevnS4ZB6vhVLz4F2aZCsJxbpQ8jmIPv7063x7BZCm6PKtjMAZDZD"',
+        expiresIn:'1709471766',
+        signedRequest:'EAAEreKSXl4IBOxSTJH8SoACwC2KFPtjlqw99MvgvVk6M3QCBdI6ZCoTlM7AanGpMLdBxukRODTIbDxjoWbsQMb0tvI9hRbJ5rrgfiW7CTyYDAITESP611e7QrZCZBt9tDL1Op8PG2qqyWIlFUADZANgL4BoG08ZAxbwFPrevnS4ZB6vhVLz4F2aZCsJxbpQ8jmIPv7063x7BZCm6PKtjMAZDZD',
+        userID:'3187028531575744'
+    }
+}
+  </script>
+<script>
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+</script>
 
 <p>The score will count one point for each frame you manage to "stay alive".</p>
     
